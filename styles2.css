@@ -16,16 +16,6 @@ body{
 }
 
 
-/* .box{
-    width: 200px;
-    height: 200px;
-    background-color: chartreuse;
-    border: 1px solid plum;
-    animation: spin 10s linear infinite;
-    animation-play-state: paused;
-    transition: background-color 1s, box-shadow 1s;
-} */
-
 .poem{
     position: fixed;
     bottom: 10%;
@@ -35,9 +25,10 @@ body{
     background-color: rgba(197, 255, 242, 0.502);
     border: 7px solid rgba(0, 251, 255, 0.358);
     border-radius: 50px;
-    font-family: 'Courier New', Courier, monospace;
+  font-family: "Overpass Mono", monospace;
     padding: 20px;
     line-height: 40px;
+    z-index: 0;
 }
 
 
@@ -65,7 +56,7 @@ top: -30%;
     overflow: hidden;
 
 
-    --s: 1; /*how the blob scales code reference: https://codepen.io/wesbos/pen/gPZBZQ?utm_source=chatgpt.com*/ 
+    --scale: 1; /*how the blob scales code reference: https://codepen.io/wesbos/pen/gPZBZQ?utm_source=chatgpt.com*/ 
 
     animation: morph 3s linear infinite; /* animation reference: https://codepen.io/karisabinemalmin/pen/exjeym*/
 }
@@ -74,16 +65,16 @@ top: -30%;
 @keyframes morph{
   0%, 100% {
     border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-    transform: scale(var(--s));
+    transform: scale(var(--scale));
   }
   34% {
     border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-    transform: scale(var(--s));
+    transform: scale(var(--scale));
 
   }
   67% {
     border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
-    transform: scale(var(--s));
+    transform: scale(var(--scale));
 
   }
 }
@@ -93,25 +84,32 @@ top: -30%;
     font-weight: bold;
 }
 
+.light{
+    font-weight: lighter;
+    font-style: italic;
+    font-size: smaller;
+}
 
 .shrink{
-    font-family: "Courier New", cursive; /* change to any font */
+    font-family: "Micro 5", sans-serif;
     color: hotpink;
     background-color: blue;
-    font-size: 24px;
+    font-size: 40px;
 }
 
 .grow{
-    font-family: "Courier New", cursive; /* change to any font */
-    color: rgb(115, 105, 255);
-    background-color: aqua;
-    font-size: 200px;
+    font-family: "Sigmar One", sans-serif;
+    color: rgb(30, 49, 255);
+    font-size: 150px;
+    font-variant: small-caps;
+    font-weight: bold;
+    background-color: #a9ff5e;
 }
 
 .sleep{
-    font-family: "Courier New", cursive; /* change to any font */
-    color: rgb(28, 28, 28);
-    background-color: rgb(60, 75, 115);
+    font-family: "Cookie", cursive;
+    color: rgb(137, 122, 222);
+    background-color: rgb(0, 42, 156);
     font-size: 100px;
 }
 
@@ -120,9 +118,10 @@ top: -30%;
 }
 
 .wake{
-    font-family: "Courier New", cursive; /* change to any font */
-    background-color: rgb(118, 255, 225);
+  font-family: "Sue Ellen Francisco", cursive;
+    background-color: rgb(255, 198, 118);
     font-size: 100px;
+    color: #a9ff5e;
 }
 
 .wake2{
@@ -130,31 +129,28 @@ top: -30%;
 }
 
 .blush{
-    font-family: "Courier New", cursive; /* change to any font */
+  font-family: "Gorditas", serif;
     color: rgb(253, 184, 255);
     background-color: #ff5e91;
-    font-size: 100px;
-    font-weight: bold;
+    font-size: 80px;
 }
 
 .happy{
-    font-family: "Courier New", cursive; /* change to any font */
-    color: rgb(253, 184, 255);
-    background-color: #ff5e91;
+    font-family: "Ribeye", serif;
+    color: rgb(255, 247, 1);
+    background-color: #e2b900;
     font-size: 100px;
-    font-weight: bold;
 }
 
 .rainbow{
-    font-family: "Courier New", cursive; /* change to any font */
+    font-family: "Henny Penny", system-ui;
     color: rgb(203, 255, 31);
     background-color: #ff5e91;
     font-size: 100px;
-    font-weight: bold;
 }
 
 .purple{
-    font-family: "Courier New", cursive; /* change to any font */
+    font-family: "Petit Formal Script", cursive;
     color: rgb(87, 31, 255);
     background-color: #dc5eff;
     font-size: 100px;

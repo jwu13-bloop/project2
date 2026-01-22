@@ -3,29 +3,37 @@ const textDisplay = document.getElementById('overlay');
 const blob = document.getElementById("blob");
 
 
-let scale = 1; 
+let scale = 1; //normal//
 
-// Initialize SpeechRecognition
+// Initialize SpeechRecognition//
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
 
-recognition.lang = 'en-US'; // English (United States)
+recognition.lang = 'en-US'; // English (United States)//
 
 recognition.interimResults = true;
 recognition.continuous = true;
 
 
-// Display recognized text
+// Display recognized text//
 recognition.onresult = function (event) {
 
     let transcript = event.results[event.results.length - 1][0].transcript;
 
-    transcript = transcript
+    transcript = transcript 
 
     //text replace reference: https://tomekdev.com/posts/highlight-text-in-javascript?utm_source=chatgpt.com //
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#:~:text=The%20replace()%20method%20of,original%20string%20is%20left%20unchanged.// 
+    
     //text.replace(/\bkeyword\b/gi, match => `<span class="highlight">${match}</span>`);//
+    //.replace = string method//
+    //\b= word boundary //
+    //keyworkd=keyword//
+    //gi = global insensitive//
+    //match the word and replaces it with the class//
+
+//*** recognize and changes the text//
 
     .replace(/\bshrink\b/gi, match => {
         return `<span class="shrink">${match}</span>`;
@@ -39,7 +47,7 @@ recognition.onresult = function (event) {
         return `<span class="sleep">${match}</span>`;
     })
 
-     .replace(/\bblush\b/gi, match => {
+    .replace(/\bblush\b/gi, match => {
         return `<span class="blush">${match}</span>`;
     })
 
@@ -58,19 +66,22 @@ recognition.onresult = function (event) {
         return `<span class="purple">${match}</span>`;
     });
 
+//*** recognize and changes the blob//
 
+// tolowercase= if statement, recognize transcript, changes words to lowercase (upper and lower) "text", //
 if (transcript.toLowerCase().includes("grow")) {
-        scale += 0.1;
-        blob.style.setProperty('--s', scale);
+        scale += 0.1;   //changes the scale of the blob//
+        blob.style.setProperty('--scale', scale); //--s is used css//
     }
 
+
 if (transcript.toLowerCase().includes("shrink")) {
-        scale = Math.max(0.1, scale - 0.1);
-        blob.style.setProperty('--s', scale);
+        scale -= 0.1;   //changes the scale of the blob//
+        blob.style.setProperty('--scale', scale); //--scale is used in css//
     }
 
 if (transcript.toLowerCase().includes("sleep")) {
-    blob.style.background = 'radial-gradient(circle at 30% 30%, #56615e, #171717)';
+    blob.style.background = 'radial-gradient(circle at 30% 30%, #56615e, #171717)'; //radial gradient ref: https://cssgradient.io///
     document.body.classList.add("sleep2");
 }
 
@@ -101,11 +112,10 @@ if (transcript.toLowerCase().includes("lilac")) {
 
 
 
-
-// Error handling
+// Error handling//
 recognition.onerror = function(event) {
     console.error('Speech recognition error:', event.error);
 };
 
-// Start speech recognition
+// Start speech recognition//
 recognition.start();
